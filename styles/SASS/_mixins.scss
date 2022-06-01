@@ -1,0 +1,27 @@
+@mixin flex($width, $height, $justify-content, $align-items) {
+    height: $height;
+    width: $width;
+    display: flex;
+    justify-content: $justify-content;
+    align-items: $align-items;
+}
+
+@mixin button($padding, $border-radius, $background) {
+    padding: $padding;
+    border: none;
+    border-radius: $border-radius;
+    background: $background;
+}
+
+@mixin backgroundSizePosition($width, $height) {
+    background-position: center top;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    height: $height;
+    width: $width;
+}
+
+@mixin widthHeight($width, $height) {
+    width: $width;
+    height: $height;
+}

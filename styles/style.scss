@@ -1,0 +1,119 @@
+@use "./SASS/" as *;
+
+* {
+    font-family: 'Sora', sans-serif;
+    box-sizing: border-box;
+    color: #FFFFFF;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+main {
+    @include flex(100%, 100%, center, center);
+    min-height: 100vh;
+ 
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -99;
+}
+
+.form-wrapper {
+    @include flex(auto, auto, center, center);
+    flex-flow: column;
+    background-color: rgba($color: #555555, $alpha: 0.4);
+    padding: 15px 30px;
+    position: sticky;
+    top: 30%;
+    box-shadow: #000000 0px 0px 10px;
+    border-radius: 5px;
+    & .text{
+        padding: 10px;
+    }  
+    & .loader {
+        display: none;
+        position: absolute;
+        bottom: -7rem;
+        background-color:#555555;
+        border-radius: 50%;
+    }  
+    & .showFlex {
+        @include flex(4rem, 4rem, center, center);
+    }    
+    & .loader::before {
+        content: "";
+        width: 100px;
+        height: 35px;
+        background-color:#555555;
+        position: absolute;
+        z-index: -1;
+        border-radius: 50%;
+        animation: spin 3s infinite;
+    }
+}
+
+form {
+    width: 10rem;
+    height: 15rem;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    & input {
+        height: 2.5rem;
+        font-size: 1.7rem;
+        color: #555555;
+    }
+    & button {
+        border: 1px #555555 solid;
+        border-radius: 0.1rem;
+        padding: .375rem .75rem;
+        border-radius: .25rem;
+        font-weight: 600;
+        font-size: 0.8rem;
+        color: #555555;
+        cursor: pointer;
+    }
+    & .newSearch {
+        display: none;
+    }
+}
+
+.object-wrapper {
+    display: none;
+    padding: 15px;
+    // min-width: 500px;
+    flex: 0.3 1 100px;
+    min-width: 500px;
+    & .object {
+        background-color: rgba($color: #555555, $alpha: 0.4);
+        margin: 10px;
+        box-shadow: #000000 0px 0px 10px;
+        border-radius: 5px;
+    }
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+@keyframes spin {
+    0%{
+      transform: rotate(0deg);
+    }
+    50%{
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
