@@ -90,7 +90,52 @@ function arrayNearEarthObj(data) {
           newDiv.innerHTML += `<p>Identifiant : ${datas.id}</p>`
           newDiv.innerHTML += `<p>Nom : ${datas.name}</p>`
           newDiv.innerHTML += `<p>Entre ${Math.ceil(datas.estimated_diameter.meters.estimated_diameter_min)} et ${Math.ceil(datas.estimated_diameter.meters.estimated_diameter_max)} mètres de diamètre</p>`
-          newDiv.innerHTML += `<p>Au plus proche de la Terre le : ${datas.close_approach_data[0].close_approach_date_full} H</p>`
+
+          //Formater la date au format FR
+          let date = datas.close_approach_data[0].close_approach_date_full
+          let month = date.substring(5,8)
+          switch (month) {
+            case 'Jan':
+              month = 'Janvier'
+              break
+            case 'Feb':
+              month = 'Février'
+              break
+            case 'Mar':
+              month = 'Mars'
+              break
+            case 'Apr':
+              month = 'Avril'
+              break
+            case 'May':
+              month = 'Mai'
+              break
+            case 'Jun':
+              month = 'Juin'
+              break
+            case 'Jul':
+              month = 'Juillet'
+              break
+            case 'Aug':
+              month = 'Aout'
+              break 
+            case 'Sep':
+              month = 'Septembre'
+              break
+            case 'Oct':
+              month = 'Octobre'
+              break
+            case 'Nov':
+              month = 'Novembre'
+              break
+            case 'Dec':
+              month = 'Decembre'
+              break
+            default: console.log(month)
+          }
+          let dateFormat = date.substring(9,11) + "/" + month + "/" + date.substring(0,4) + " à " + date.substring(12) + " H"
+
+          newDiv.innerHTML += `<p>Au plus proche de la Terre le : ${dateFormat}</p>`
           newDiv.innerHTML += `<p> À : ${Math.ceil(datas.close_approach_data[0].miss_distance.kilometers)} kilomètres de distance</p>`
           newDiv.style.padding = "20px"
           objects.appendChild(newDiv)
