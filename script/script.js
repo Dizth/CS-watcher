@@ -51,6 +51,7 @@ const getData = url => {
       return response.json()
     })
     .then(response => {
+      console.log(response)
       return data(response)
     })
     .catch(error => console.log(error))
@@ -134,9 +135,8 @@ function arrayNearEarthObj(data) {
             default: console.log(month)
           }
           let dateFormat = date.substring(9,11) + "/" + month + "/" + date.substring(0,4) + " à " + date.substring(12) + " H"
-
           newDiv.innerHTML += `<p>Au plus proche de la Terre le : ${dateFormat}</p>`
-          newDiv.innerHTML += `<p> À : ${Math.ceil(datas.close_approach_data[0].miss_distance.kilometers)} kilomètres de distance</p>`
+          newDiv.innerHTML += `<p> À : ${Math.ceil(datas.close_approach_data[0].miss_distance.kilometers).toLocaleString()} kilomètres de distance</p>`
           newDiv.style.padding = "20px"
           objects.appendChild(newDiv)
           document.querySelector('.form-wrapper').style.alignSelf = "flex-start"

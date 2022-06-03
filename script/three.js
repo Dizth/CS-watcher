@@ -55,7 +55,7 @@ const canvas = document.getElementsByTagName("canvas")[0];
   );
   bloomPass.threshold = 0.040; // dispersion des nuages
   bloomPass.strength = 0.8; //intensity of glow
-  bloomPass.radius = 0;
+  bloomPass.radius = 0.5;
   const bloomComposer = new EffectComposer(renderer);
   bloomComposer.setSize(window.innerWidth, window.innerHeight);
   bloomComposer.renderToScreen = true;
@@ -118,18 +118,18 @@ function render() {
       }
   }
 
-  if (bloomPass.radius <= 0 && bloomRad == 0) {
-    bloomPass.radius += 0.003
-  } else {
-    bloomRad = 1
-  }
+  // if (bloomPass.radius <= 0 && bloomRad == 0) {
+  //   bloomPass.radius += 0.003
+  // } else {
+  //   bloomRad = 1
+  // }
 
-  if (bloomRad == 1) {
-    bloomPass.radius -= 0.003
-      if (bloomPass.radius <= -2) {
-        bloomRad = 0
-      }
-  }
+  // if (bloomRad == 1) {
+  //   bloomPass.radius -= 0.003
+  //     if (bloomPass.radius <= -2) {
+  //       bloomRad = 0
+  //     }
+  // }
 
   // camera.layers.set(1);
   bloomComposer.render();
