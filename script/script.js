@@ -162,8 +162,8 @@ function watchResultsSize() {
     console.log('column')
   } else if (objects.childElementCount !== 0) {
     mainContainer.style.flexDirection = "row"
-    formWrapper.classList.add('positionSticky')
     formWrapper.classList.remove('positionRelative')
+    formWrapper.classList.add('positionSticky')
     formWrapper.style.alignSelf = "flex-start"
     console.log('row')
   }
