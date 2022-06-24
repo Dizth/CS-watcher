@@ -13,9 +13,18 @@ main {
   height: 100%;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   min-height: 100vh;
+  flex-flow: column;
+}
+main section:first-child {
+  width: 30%;
+  min-width: 300px;
+  font-size: 1.5rem;
+}
+main section:first-child h1 {
+  margin: 0;
 }
 
 canvas {
@@ -34,9 +43,6 @@ canvas {
   flex-flow: column;
   background-color: rgba(85, 85, 85, 0.4);
   padding: 15px 30px;
-  position: sticky;
-  top: 50%;
-  transform: translateY(-50%);
   box-shadow: #000000 0px 0px 10px;
   border-radius: 5px;
 }
@@ -98,7 +104,6 @@ form .newSearch {
   display: none;
   padding: 15px;
   flex: 0.3 1 100px;
-  min-width: 500px;
 }
 .object-wrapper .object {
   background-color: rgba(85, 85, 85, 0.6);
@@ -128,6 +133,16 @@ form .newSearch {
 
 .hide {
   display: none;
+}
+
+.positionSticky {
+  position: sticky;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.positionRelative {
+  position: relative;
 }
 
 @keyframes spin {

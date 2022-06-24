@@ -1,0 +1,20 @@
+@media screen and (max-width: 1350px) {
+  main {
+    justify-content: space-around;
+  }
+}
+@media screen and (min-width: 1350px) {
+  main section:first-child {
+    margin-left: 5rem;
+    margin-top: 5rem;
+    align-self: flex-start;
+  }
+
+  .form-wrapper {
+    position: sticky;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+/*# sourceMappingURL=mediaqueries.css.map */

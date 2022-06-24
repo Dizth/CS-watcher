@@ -5,6 +5,8 @@ const form = document.querySelector('form')
 const input = document.querySelectorAll('input')
 const objects = document.querySelector('.object-wrapper')
 const loader = document.querySelector('.loader')
+const mainContainer = document.querySelector('main')
+const formWrapper = document.querySelector('.form-wrapper')
 
 form.addEventListener('submit', () => {
   event.preventDefault()
@@ -40,7 +42,6 @@ function verifySearch(dateArray) {
 //Récuperation des dates et inclusion dans l'url
 function getStartEndDates(verifiedArray) {
   const url = `https://api.nasa.gov/neo/rest/v1/feed?start_date=${verifiedArray[0]}&end_date=${verifiedArray[1]}&api_key=DEMO_KEY`
-  console.log(url)
   return loadingSpinner(url)
 }
 
@@ -60,7 +61,6 @@ const getData = url => {
 async function loadingSpinner(url) {
   try {
     loader.classList.add('showFlex')
-    console.log('OK')
     const fetch = await getData(url)
     return fetch
   } catch (err) {
@@ -68,6 +68,8 @@ async function loadingSpinner(url) {
   } finally {
     loader.classList.remove('showFlex')
     objects.style.display = "block"
+    watchResultsSize()
+    document.querySelector('.intro').style.display = "none"
   }
 }
 
@@ -139,10 +141,32 @@ function arrayNearEarthObj(data) {
           newDiv.innerHTML += `<p> À : ${Math.ceil(datas.close_approach_data[0].miss_distance.kilometers).toLocaleString()} kilomètres de distance</p>`
           newDiv.style.padding = "20px"
           objects.appendChild(newDiv)
-          document.querySelector('.form-wrapper').style.alignSelf = "flex-start"
-          document.querySelector('main').style.justifyContent = "space-around"
+          formWrapper.style.alignSelf = "flex-start"
+          mainContainer.style.justifyContent = "space-around"
+          if (objects.childElementCount > 0) {
+          formWrapper.classList.add('positionSticky')
+          }
         })
       }
     })
   }
 }
+
+function watchResultsSize() {
+  if (window.innerWidth <= 1028 && objects.childElementCount > 0) {
+    mainContainer.style.flexDirection = "column"
+    formWrapper.style.marginTop = "20px"
+    formWrapper.classList.remove('positionSticky')
+    formWrapper.classList.add('positionRelative')
+    formWrapper.style.alignSelf = ''
+    console.log('column')
+  } else if (objects.childElementCount !== 0) {
+    mainContainer.style.flexDirection = "row"
+    formWrapper.classList.add('positionSticky')
+    formWrapper.style.alignSelf = "flex-start"
+    console.log('row')
+  }
+}
+
+window.addEventListener('resize', watchResultsSize)
+// appeler watchResultsSize au moment de la création des résultats

@@ -12,9 +12,17 @@ body {
 }
 
 main {
-    @include flex(100%, 100%, center, center);
+    @include flex(100%, 100%, flex-start, center);
     min-height: 100vh;
- 
+    flex-flow: column;
+    & section:first-child {
+        width: 30%;
+        min-width: 300px;
+        font-size: 1.5rem;
+        & h1 {
+            margin: 0;
+        }
+    }
 }
 
 canvas {
@@ -29,9 +37,6 @@ canvas {
     flex-flow: column;
     background-color: rgba($color: #555555, $alpha: 0.4);
     padding: 15px 30px;
-    position: sticky;
-    top: 50%;
-    transform: translateY(-50%);
     box-shadow: #000000 0px 0px 10px;
     border-radius: 5px;
     & .text{
@@ -49,8 +54,7 @@ canvas {
     }    
     & .loader::before {
         content: "";
-        width: 100px;
-        height: 35px;
+        @include widthHeight(100px, 35px);
         background-color:#555555;
         position: absolute;
         z-index: -1;
@@ -89,7 +93,6 @@ form {
     display: none;
     padding: 15px;
     flex: 0.3 1 100px;
-    min-width: 500px;
     & .object {
         background-color: rgba($color: #555555, $alpha: 0.6);
         margin: 10px;
@@ -115,6 +118,16 @@ form {
 
 .hide {
     display: none;
+}
+
+.positionSticky {
+    position: sticky;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.positionRelative {
+    position: relative;
 }
 
 @keyframes spin {
