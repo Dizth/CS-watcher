@@ -46,9 +46,9 @@ canvas {
 
 .loader {
     display: none;
-    bottom: -7rem;
     background-color:#555555;
     border-radius: 50%;
+    position: relative;
     &::before {
         content: "";
         @include widthHeight(100px, 35px);
