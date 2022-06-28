@@ -41,18 +41,15 @@ canvas {
     border-radius: 5px;
     & .text{
         padding: 10px;
-    }  
-    & .loader {
-        display: none;
-        position: absolute;
-        bottom: -7rem;
-        background-color:#555555;
-        border-radius: 50%;
-    }  
-    & .showFlex {
-        @include flex(4rem, 4rem, center, center);
     }    
-    & .loader::before {
+}
+
+.loader {
+    display: none;
+    bottom: -7rem;
+    background-color:#555555;
+    border-radius: 50%;
+    &::before {
         content: "";
         @include widthHeight(100px, 35px);
         background-color:#555555;
@@ -61,7 +58,11 @@ canvas {
         border-radius: 50%;
         animation: spin 3s infinite;
     }
-}
+}  
+
+.showFlex {
+    @include flex(4rem, 4rem, center, center);
+}  
 
 form {
     width: 12.8rem;

@@ -13,10 +13,11 @@
         margin-top: 5rem;
         align-self: flex-start;
     }
-    .form-wrapper {
-        align-self: flex-start;
-        top: 50%;
-        transform: translateY(-50%);
-    }
 }
+
+// @media screen and (max-height: 660px) {
+//     .intro {
+//         font-size: 2vh;
+//     }
+// }
 

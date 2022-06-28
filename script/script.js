@@ -29,13 +29,13 @@ btnNewSearch.addEventListener('click', () => {
   btnNewSearch.style.display = "none"
   btnSearch.style.display = "block"
   input.forEach(input => input.value = "")
+  input.forEach(value => value.removeAttribute("disabled", false))
   text.removeChild(text.lastChild)
 })
 
 //correction des valeurs entrées dans dateArray
 function verifySearch(dateArray) {
   let verifiedArray = dateArray.map(date => date.replaceAll(' ', '-'))
-  console.log(verifiedArray)
   return getStartEndDates(verifiedArray)
 }
 
@@ -49,10 +49,13 @@ function getStartEndDates(verifiedArray) {
 const getData = url => {
   return fetch(url)
     .then(response => {
-      return response.json()
+      if (response.status >= 400) {
+        alert("Le nombre de jours maximal par recherche est limité à 7, veuillez reformuler votre recherche.")
+      } else {
+        return response.json()
+      }
     })
     .then(response => {
-      console.log(response)
       return data(response)
     })
     .catch(error => console.log(error))
@@ -60,6 +63,7 @@ const getData = url => {
 
 async function loadingSpinner(url) {
   try {
+    formWrapper.style.display = "none"
     loader.classList.add('showFlex')
     const fetch = await getData(url)
     return fetch
@@ -68,6 +72,8 @@ async function loadingSpinner(url) {
   } finally {
     loader.classList.remove('showFlex')
     objects.style.display = "block"
+    formWrapper.style.display = "flex"
+    input.forEach(value => value.setAttribute("disabled", true))
     watchResultsSize()
     document.querySelector('.intro').style.display = "none"
   }
@@ -78,7 +84,6 @@ function data(response) {
   let dataArray = response
   text.innerHTML += `<p>Nombre d'asteroides : ${dataArray.element_count}</p>`
   let nearEarthObj = Object.entries(dataArray.near_earth_objects)
-  console.log(nearEarthObj)
   return arrayNearEarthObj(nearEarthObj)
 }
 
@@ -157,15 +162,12 @@ function watchResultsSize() {
     mainContainer.style.flexDirection = "column"
     formWrapper.style.marginTop = "20px"
     formWrapper.classList.remove('positionSticky')
-    formWrapper.classList.add('positionRelative')
     formWrapper.style.alignSelf = ''
-    console.log('column')
   } else if (objects.childElementCount !== 0) {
     mainContainer.style.flexDirection = "row"
     formWrapper.classList.remove('positionRelative')
     formWrapper.classList.add('positionSticky')
     formWrapper.style.alignSelf = "flex-start"
-    console.log('row')
   }
 }
 

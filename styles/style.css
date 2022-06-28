@@ -49,21 +49,14 @@ canvas {
 .form-wrapper .text {
   padding: 10px;
 }
-.form-wrapper .loader {
+
+.loader {
   display: none;
-  position: absolute;
   bottom: -7rem;
   background-color: #555555;
   border-radius: 50%;
 }
-.form-wrapper .showFlex {
-  height: 4rem;
-  width: 4rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.form-wrapper .loader::before {
+.loader::before {
   content: "";
   width: 100px;
   height: 35px;
@@ -72,6 +65,14 @@ canvas {
   z-index: -1;
   border-radius: 50%;
   animation: spin 3s infinite;
+}
+
+.showFlex {
+  height: 4rem;
+  width: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 form {

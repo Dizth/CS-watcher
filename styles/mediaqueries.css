@@ -9,12 +9,6 @@
     margin-top: 5rem;
     align-self: flex-start;
   }
-
-  .form-wrapper {
-    position: sticky;
-    top: 50%;
-    transform: translateY(-50%);
-  }
 }
 
 /*# sourceMappingURL=mediaqueries.css.map */
