@@ -76,6 +76,7 @@ async function loadingSpinner(url) {
     input.forEach(value => value.setAttribute("disabled", true))
     watchResultsSize()
     document.querySelector('.intro').style.display = "none"
+    document.querySelector('.info').style.display = "none"
   }
 }
 
