@@ -2,12 +2,22 @@
   main {
     justify-content: space-around;
   }
+
+  .info {
+    top: 5.9vw;
+    right: 5.9vw;
+  }
 }
 @media screen and (min-width: 1350px) {
-  main section:first-child {
+  main .intro {
     margin-left: 5rem;
     margin-top: 5rem;
     align-self: flex-start;
+  }
+}
+@media screen and (min-height: 700px) {
+  main .intro {
+    font-size: 1.5rem;
   }
 }
 

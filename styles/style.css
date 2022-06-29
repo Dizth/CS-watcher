@@ -18,13 +18,22 @@ main {
   min-height: 100vh;
   flex-flow: column;
 }
-main section:first-child {
+main .intro {
   width: 30%;
   min-width: 300px;
-  font-size: 1.5rem;
+  font-size: 3vh;
 }
-main section:first-child h1 {
+main .intro h1 {
   margin: 0;
+  display: inline;
+}
+
+.info {
+  text-decoration: none;
+  border: none;
+  position: fixed;
+  top: 5rem;
+  right: 5rem;
 }
 
 canvas {

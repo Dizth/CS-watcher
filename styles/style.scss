@@ -15,14 +15,23 @@ main {
     @include flex(100%, 100%, flex-start, center);
     min-height: 100vh;
     flex-flow: column;
-    & section:first-child {
+    & .intro {
         width: 30%;
         min-width: 300px;
-        font-size: 1.5rem;
+        font-size: 3vh;
         & h1 {
             margin: 0;
+            display: inline;
         }
     }
+}
+
+.info {
+    text-decoration: none;
+    border: none;
+    position: fixed;
+    top: 5rem;
+    right: 5rem;
 }
 
 canvas {
